@@ -116,8 +116,6 @@ class analyseUser(object):
         return rt
 
 
-
-a = analyseUser("toocooltohavefriends")
-#a.getBasicMsg()
-#a.getAnswerData()
-a.getFollowersData()
+if __name__ == '__main__':
+    a = analyseUser("toocooltohavefriends")
+    a.getFollowersData()
