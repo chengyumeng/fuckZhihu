@@ -6,6 +6,7 @@ import requests
 from pprint import pprint
 import re
 import json
+import time
 
 class analyseUser(object):
     headers = {
@@ -63,10 +64,8 @@ class analyseUser(object):
         target = json.loads(page)
         data = target['data']
         for v in data:
-            print(v['question']['title'])
-            print(str(v['voteup_count']))
-            print(str(v['updated_time']))
-            self.getVoterData(v['id'])
+            print(v['question']['title'].encode("utf-8") + " 赞同： " + str(v['voteup_count']) + " 更新时间：" + str(v['updated_time']))
+            # self.getVoterData(v['id'])
 
     def getVoterData(self,answer_id):
         offset  = 0
@@ -81,15 +80,19 @@ class analyseUser(object):
                    badge[?(type=best_answerer)].topics&offset=" + str(offset) +  "&limit=" + str(step)
             page = self.session.get(url,headers = self.headers).content
             target = json.loads(page)
-            data = target['data']
-            for v in data:
-                answer_count.append(v['answer_count'])
-                articles_count.append(v['articles_count'])
-                follower_count.append(v['follower_count'])
+            try :
+                data = target['data']
+                for v in data:
+                    answer_count.append(v['answer_count'])
+                    articles_count.append(v['articles_count'])
+                    follower_count.append(v['follower_count'])
+            except:
+                time.sleep(0)
             if(target['paging']['is_end'] == True):
                 is_over = True
             offset = offset + step    
-        return {'answer_count':answer_count,'articles_count':articles_count,'follower_count':follower_count}
+        rt = {'answer_count':answer_count,'articles_count':articles_count,'follower_count':follower_count}
+        return rt
 
     def getFollowersData(self):
         start   = 20
@@ -112,7 +115,7 @@ class analyseUser(object):
                     rt['male'] = rt['male'] + 1
                 rt['follower'] = rt['follower'] + v['follower_count']
                 rt['answer']   = rt['answer'] + v['answer_count']
-        pprint(rt)
+        self.followers = rt
         return rt
 
 

@@ -113,8 +113,7 @@ class loginOperator(object):
 
 
 if __name__ == '__main__':
-    au = "Bearer Mi4wQUFDQWZaVkhBQUFBVU1KWTZEdWZDeVlBQUFCZ0FsVk5vSkVkV1FDVEJhSm1KZkQ0MXZxenZwMENKTGdPX2JleTdB|1492650396|5a673bbe0a2392d344f3820fb078dee2439da317"
-    xu = "AEBCLN5DoguPTn6l_2L9zlaAkJL8FelnXfQ="
-    a = loginOperator(au,xu,'Komura')
+    au = "Bearer Mi4wQUFDQWZfVkhBQUFBVU1KWTZEdWZDeVlBQUFCZ0FsVk5vSkVkV1FDVEJhSm1KZkQ0MXZxenZwMENKTGdPX2JleTdB|1492650396|5a673bbe0a2392d344f3820fb078dee2439da317"
+    xu = "AEBCLN5MoguPTn6ll5L9zlaAkJL8FelnXfQ="
+    a = loginOperator(au,xu,'toocooltohavefriends')
     a.deleteActivities()
-    # a.stopFollow("qi-qi-70-28")
