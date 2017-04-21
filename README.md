@@ -1,5 +1,4 @@
 #  fuckZhihu 批量进行知乎操作的利器
-![fuckZHihu](https://github.com/Chengyumeng/fuckZhihu/blob/master/logo.jpeg)
 
 ## 执行未登录操作
 ```console
